@@ -14,22 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import AppKit
 import SwiftUI
-
-let external_padding = 8.0
-let left_padding = 4 * external_padding;
-
-let bg_color = color_from_hex(0x282828)
-let text_color = color_from_hex(0xebdbb2)
-
-func color_from_hex(_ hex: Int) -> Color {
-     return Color(
-         red: Double((hex >> 16) & 0xff) / 255.0,
-         green: Double((hex >> 8) & 0xff) / 255.0,
-         blue: Double((hex >> 0) & 0xff) / 255.0
-     )
-}
 
 func add_corner(bottom: Bool = false, right: Bool = false) -> _ShapeView<Path, Color> {
      var start_horiz = left_padding // 0.0
@@ -106,79 +91,17 @@ func add_edge(vertical: Bool = false, opposite: Bool = false) -> _ShapeView<Path
     }.fill(bg_color)
 }
 
-struct ContentView: View {
+struct BorderView : View {
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
-                add_corner()
-                add_corner(right: true)
-                add_corner(bottom: true)
-                add_corner(bottom: true, right: true)
-                add_edge()
-                add_edge(vertical: true)
-                add_edge(opposite: true)
-                add_edge(vertical: true, opposite: true)
-            }
-            ClockView()
-                .position(x: 2 * external_padding, y: 4 * external_padding)
-        }
-    }
-}
-
-struct ClockView : View {
-    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
-    let cal = Calendar.current
-
-    @State var hour: NSInteger = 0
-    @State var minute: NSInteger = 0
-    @State var second: NSInteger = 0
-
-    var body: some View {
-        HStack {
-            let hourString = String(format: "%02d", hour)
-            let minuteString = String(format: "%02d", minute)
-            let secondString = String(format: "%02d", second)
-            Text("\(hourString)\n\(minuteString)\n\(secondString)")
-                .font(.custom("Iosevka", fixedSize: 16))
-                .foregroundColor(text_color)
-                .onHover { hover in
-                    print("Mouse hover: \(hover)")
-                }
-        }
-        .onReceive(timer) { time in
-            hour = cal.component(.hour, from: time)
-            minute = cal.component(.minute, from: time)
-            second = cal.component(.second, from: time)
-        }
-        
-    }
-}
-
-@main
-struct HelloApp: App {
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .frame(width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height, alignment: .center)
-        }
-        .windowResizability(.contentSize)
-    }
-}
-
-class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-         return true
-    }
-
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        NSApplication.shared.setActivationPolicy(.regular)
-
-        if let window = NSApplication.shared.windows.first {
-            window.styleMask = .borderless
-            window.isOpaque = false;
-            window.backgroundColor = .clear;
+        GeometryReader { geometry in
+            add_corner()
+            add_corner(right: true)
+            add_corner(bottom: true)
+            add_corner(bottom: true, right: true)
+            add_edge()
+            add_edge(vertical: true)
+            add_edge(opposite: true)
+            add_edge(vertical: true, opposite: true)
         }
     }
 }

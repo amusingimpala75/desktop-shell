@@ -30,7 +30,7 @@ struct ContentView: View {
         ZStack {
             BorderView()
             ClockView()
-                .position(x: 2 * external_padding, y: 4 * external_padding)
+                .position(x: 3 * external_padding, y: 6 * external_padding)
         }
     }
 }

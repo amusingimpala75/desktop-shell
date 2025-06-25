@@ -30,7 +30,7 @@ struct ClockView : View {
             let minuteString = String(format: "%02d", minute)
             let secondString = String(format: "%02d", second)
             Text("\(hourString)\n\(minuteString)\n\(secondString)")
-                .font(.custom("Iosevka", fixedSize: 16))
+                .font(.custom(font_family, fixedSize: font_size))
                 .foregroundColor(text_color)
                 .onHover { hover in
                     print("Mouse hover: \(hover)")

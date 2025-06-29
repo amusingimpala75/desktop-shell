@@ -17,40 +17,40 @@
 import SwiftUI
 
 func add_corner(bottom: Bool = false, right: Bool = false) -> _ShapeView<Path, Color> {
-     var start_horiz = left_padding // 0.0
-     var start_vert = 0.0
-     var vstep = external_padding
-     var hstep = external_padding
+    var start_horiz = left_padding // 0.0
+    var start_vert = 0.0
+    var vstep = external_padding
+    var hstep = external_padding
 
-     var start_angle = 180.0
-     var end_angle = 270.0
-     let clockwise = bottom != right
+    var start_angle = 180.0
+    var end_angle = 270.0
+    let clockwise = bottom != right
 
-     if bottom {
-         vstep = -vstep
-         start_vert = NSScreen.main!.frame.height
-         end_angle = 90.0
-     }
+    if bottom {
+        vstep = -vstep
+        start_vert = NSScreen.main!.frame.height
+        end_angle = 90.0
+    }
 
-     if right {
-         hstep = -hstep
-         start_horiz = NSScreen.main!.frame.width
-         start_angle = 0.0
-     }
+    if right {
+        hstep = -hstep
+        start_horiz = NSScreen.main!.frame.width
+        start_angle = 0.0
+    }
 
-     return Path { path in
-         path.move(to: CGPoint(x: start_horiz, y: start_vert))
-         path.addLine(to: CGPoint(x: start_horiz, y: start_vert + 2 * vstep))
-         path.addArc(
-             center: CGPoint(x: start_horiz + hstep * 2, y: start_vert + vstep * 2),
-             radius: external_padding,
-             startAngle: .degrees(start_angle),
-             endAngle: .degrees(end_angle),
-             clockwise: clockwise
-         )
-         path.addLine(to: CGPoint(x: start_horiz + 2 * hstep, y: start_vert))
-         path.addLine(to: CGPoint(x: start_horiz, y: start_vert))
-     }.fill(bg_color)
+    return Path { path in
+        path.move(to: CGPoint(x: start_horiz, y: start_vert))
+        path.addLine(to: CGPoint(x: start_horiz, y: start_vert + 2 * vstep))
+        path.addArc(
+          center: CGPoint(x: start_horiz + hstep * 2, y: start_vert + vstep * 2),
+          radius: external_padding,
+          startAngle: .degrees(start_angle),
+          endAngle: .degrees(end_angle),
+          clockwise: clockwise
+        )
+        path.addLine(to: CGPoint(x: start_horiz + 2 * hstep, y: start_vert))
+        path.addLine(to: CGPoint(x: start_horiz, y: start_vert))
+    }.fill(bg_color)
 }
 
 func add_edge(vertical: Bool = false, opposite: Bool = false) -> _ShapeView<Path, Color> {

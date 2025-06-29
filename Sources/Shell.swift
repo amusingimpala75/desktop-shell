@@ -18,11 +18,11 @@ import AppKit
 import SwiftUI
 
 func color_from_hex(_ hex: Int) -> Color {
-     return Color(
-         red: Double((hex >> 16) & 0xff) / 255.0,
-         green: Double((hex >> 8) & 0xff) / 255.0,
-         blue: Double((hex >> 0) & 0xff) / 255.0
-     )
+    return Color(
+      red: Double((hex >> 16) & 0xff) / 255.0,
+      green: Double((hex >> 8) & 0xff) / 255.0,
+      blue: Double((hex >> 0) & 0xff) / 255.0
+    )
 }
 
 struct ContentView: View {
@@ -30,7 +30,7 @@ struct ContentView: View {
         ZStack {
             BorderView()
             ClockView()
-                .position(x: 3 * external_padding, y: 6 * external_padding)
+              .position(x: 3 * external_padding, y: 6 * external_padding)
         }
     }
 }
@@ -42,15 +42,15 @@ struct HelloApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height, alignment: .center)
+              .frame(width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height, alignment: .center)
         }
-        .windowResizability(.contentSize)
+          .windowResizability(.contentSize)
     }
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-         return true
+        return true
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {

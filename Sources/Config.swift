@@ -14,11 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-let external_padding = 12.0
-let left_padding = 4 * external_padding;
+let corner_radius = 9.0
+let bar_width = 48.0
+let screen_padding = 0.0
+let gap = 6.0
 
-let bg_color = color_from_hex(0x000000)
-let text_color = color_from_hex(0xffffff)
+let bg_color = color_from_hex(0x101010)
+let mid_color = color_from_hex(0x808080)
+let text_color = color_from_hex(0xf0f0f0)
 
 let font_family = "Iosevka"
 let font_size = 24.0

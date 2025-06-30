@@ -26,11 +26,16 @@ func color_from_hex(_ hex: Int) -> Color {
 }
 
 struct ContentView: View {
+    @State var right_tab_open = false
+
     var body: some View {
         ZStack {
+            let screen_height = NSScreen.main!.frame.height
             BorderView()
             ClockView()
-              .position(x: 3 * external_padding, y: 6 * external_padding)
+              .position(x: bar_width / 2, y: screen_height / 20)
+            AppleIconView(tab_open: $right_tab_open)
+              .position(x: bar_width / 2, y: screen_height * 0.98)
         }
     }
 }

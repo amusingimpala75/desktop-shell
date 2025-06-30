@@ -32,15 +32,10 @@ struct ClockView : View {
             Text("\(hourString)\n\(minuteString)\n\(secondString)")
               .font(.custom(font_family, fixedSize: font_size))
               .foregroundColor(text_color)
-              .onHover { hover in
-                  print("Mouse hover: \(hover)")
-              }
+        }.onReceive(timer) { time in
+            hour = cal.component(.hour, from: time)
+            minute = cal.component(.minute, from: time)
+            second = cal.component(.second, from: time)
         }
-          .onReceive(timer) { time in
-              hour = cal.component(.hour, from: time)
-              minute = cal.component(.minute, from: time)
-              second = cal.component(.second, from: time)
-          }
-        
     }
 }

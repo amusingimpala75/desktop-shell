@@ -15,8 +15,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 let corner_radius = 9.0
-let bar_width = 48.0
-let screen_padding = 0.0
+let screen_padding = 8.0
+let bar_width = 48.0 + screen_padding
 let gap = 6.0
 
 let bg_color = color_from_hex(0x101010)

@@ -34,6 +34,7 @@ struct ContentView: View {
             BorderView()
             ClockView()
               .position(x: bar_width / 2, y: screen_height / 20)
+            BatteryView(width: bar_width / 2, height: bar_width / 2, x: bar_width / 2, y: screen_height * 0.94)
             AppleIconView(tab_open: $right_tab_open)
               .position(x: bar_width / 2, y: screen_height * 0.98)
         }

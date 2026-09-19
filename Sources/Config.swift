@@ -23,5 +23,8 @@ let bg_color = color_from_hex(0x101010)
 let mid_color = color_from_hex(0x808080)
 let text_color = color_from_hex(0xf0f0f0)
 
+let charging_color = color_from_hex(0x6B8E23)
+let low_power_color = color_from_hex(0xffff00)
+
 let font_family = "Iosevka"
 let font_size = 24.0
